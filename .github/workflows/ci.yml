@@ -37,7 +37,7 @@ jobs:
         v -prod users.v
     - name: Run UI examples
       run: |
-        export DISPLAY=:0
+        x11vnc -display :0
         cd ./vlib/ui/examples/
         v run ./run_examples.vsh
 
