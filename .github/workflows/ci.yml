@@ -41,54 +41,54 @@ jobs:
         cd ./vlib/ui/examples/
         v run ./run_examples.vsh
 
-  macos:
-    runs-on: macos-latest
-    steps:
-    - name: Checkout V
-      uses: actions/checkout@v2
-      with:
-        repository: vlang/v
-    - name: Checkout V UI
-      uses: actions/checkout@v2
-      with:
-        path: vlib/ui
-    - name: Install dependencies
-      run: |
-        brew install freetype
-    - name: Build V
-      run: |
-        make
-        ./v symlink
-    - name: Build UI examples
-      run: |
-        cd ./vlib/ui/examples/
-        v run ./build_examples.vsh
+  # macos:
+  #   runs-on: macos-latest
+  #   steps:
+  #   - name: Checkout V
+  #     uses: actions/checkout@v2
+  #     with:
+  #       repository: vlang/v
+  #   - name: Checkout V UI
+  #     uses: actions/checkout@v2
+  #     with:
+  #       path: vlib/ui
+  #   - name: Install dependencies
+  #     run: |
+  #       brew install freetype
+  #   - name: Build V
+  #     run: |
+  #       make
+  #       ./v symlink
+  #   - name: Build UI examples
+  #     run: |
+  #       cd ./vlib/ui/examples/
+  #       v run ./build_examples.vsh
 
-  windows-msvc:
-    runs-on: windows-latest
-    env:
-        VFLAGS: -cc msvc
-    steps:
-    - name: Checkout V
-      uses: actions/checkout@v2
-      with:
-        repository: vlang/v
-    - name: Checkout V UI
-      uses: actions/checkout@v2
-      with:
-        path: vlib/ui
-    - name: Build V
-      run: |
-        .\make.bat -msvc
-    - name: Install dependencies
-      run: |
-        .\v.exe setup-freetype
-    # Don't move applying V directory to PATH, to other steps
-    # otherwise this step and V script won't see V executable.
-    - name: Build UI examples
-      run: |
-        $env:path += ";$(get-location)"
-        cd .\vlib\ui\examples\
-        & v run .\build_examples.vsh
-        echo "=========================="
-        echo "v -showcc .\users.v"
+  # windows-msvc:
+  #   runs-on: windows-latest
+  #   env:
+  #       VFLAGS: -cc msvc
+  #   steps:
+  #   - name: Checkout V
+  #     uses: actions/checkout@v2
+  #     with:
+  #       repository: vlang/v
+  #   - name: Checkout V UI
+  #     uses: actions/checkout@v2
+  #     with:
+  #       path: vlib/ui
+  #   - name: Build V
+  #     run: |
+  #       .\make.bat -msvc
+  #   - name: Install dependencies
+  #     run: |
+  #       .\v.exe setup-freetype
+  #   # Don't move applying V directory to PATH, to other steps
+  #   # otherwise this step and V script won't see V executable.
+  #   - name: Build UI examples
+  #     run: |
+  #       $env:path += ";$(get-location)"
+  #       cd .\vlib\ui\examples\
+  #       & v run .\build_examples.vsh
+  #       echo "=========================="
+  #       echo "v -showcc .\users.v"
