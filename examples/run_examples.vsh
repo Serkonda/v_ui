@@ -1,7 +1,7 @@
 import sync
 
 fn launch_exe(name string, mut ret []int, mut wg sync.WaitGroup) {
-	ret << system('timeout 2s ./$name')
+	ret << system('timeout 1s ./$name')
 	wg.done()
 }
 

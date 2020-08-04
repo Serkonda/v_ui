@@ -35,8 +35,9 @@ jobs:
         cd ./vlib/ui/examples/
         v run ./build_examples.vsh
         v -prod users.v
-    - name: Run examples
+    - name: Run UI examples
       run: |
+        export DISPLAY=:0
         cd ./vlib/ui/examples/
         v run ./run_examples.vsh
 
