@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install --quiet -y libglfw3-dev libfreetype6-dev
+        sudo apt-get install --quiet -y libglfw3-dev libfreetype6-dev x11vnc
     - name: Build V
       run: |
         make
